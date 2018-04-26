@@ -62,8 +62,8 @@ var COMMON_WEB_FILES = [
 ];
 var MOZCENTRAL_DIFF_FILE = 'mozcentral.diff';
 
-var REPO = 'git@github.com:mozilla/pdf.js.git';
-var DIST_REPO_URL = 'https://github.com/mozilla/pdfjs-dist';
+var REPO = 'git@github.com:meine-stadt-transparent/pdf.js.git';
+var DIST_REPO_URL = 'https://github.com/meine-stadt-transparent/pdfjs-dist';
 
 var builder = require('./external/builder/builder.js');
 
@@ -1352,6 +1352,10 @@ gulp.task('dist-pre',
       SINGLE_FILE_DIR + 'build/pdf.combined.js.map',
       SRC_DIR + 'pdf.worker.entry.js',
     ]).pipe(gulp.dest(DIST_DIR + 'build/')),
+    gulp.src([
+      MINIFIED_DIR + '*',
+      MINIFIED_DIR + '**/*',
+    ]).pipe(gulp.dest(DIST_DIR + 'viewer/')),
     gulp.src(MINIFIED_DIR + 'build/pdf.js')
         .pipe(rename('pdf.min.js'))
         .pipe(gulp.dest(DIST_DIR + 'build/')),
